@@ -1,3 +1,10 @@
-<h1> Hello, <%= current_user.name %>
-<h2> My Events </h2>
-<p> events go here... </p>
+<h2> Event Details </h2>
+<%= render @event %>
+<%= render 'attend' %> <br>
+
+<h3> Attendees </h3>
+<% @attended_event.each do |attendee|%>
+  <%= attendee.attendee_id %> <br>
+<% end %>
+
+<%= link_to "Back to All Events", root_path %>

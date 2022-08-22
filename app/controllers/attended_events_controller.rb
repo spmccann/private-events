@@ -1,0 +1,2 @@
+class AttendedEventsController < ApplicationController
+end

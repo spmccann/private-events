@@ -1,11 +1,14 @@
 <h1>Private-Events</h1>
 <p>Create Events. Attend Events. Profit.</p>
 <%= link_to "Sign Up", "users/sign_up" %> <br> <br>
-<%= link_to "Sign In", "users/sign_in" %>
+<%= link_to "Sign In", "users/sign_in" %> <br> <br>
+<%= link_to "View and Create Your Events", current_user %> <br> <br>
 <% if user_signed_in?%>
   <%= button_to('Logout', destroy_user_session_path, :method => :delete) %>
   <h2> All Events </h2>
-  <%# @events.each do |event| %>
-    <%# render event %>
-  <%# end %>
+  <% @events.each do |event| %>
+    <p><%= event.title %></p>
+    <p>Creator: <%= event.user.name %></p>
+    <%= link_to "Event Details", event %>  <br>--------------------
+  <% end %>
 <% end %>

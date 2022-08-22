@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
+
   def index
     @events = Event.all
   end
@@ -19,12 +20,19 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find([:id])
+    @event = Event.find(params[:id])
+    @attended_event = AttendedEvent.where('event_id = ?', @event)
+  end
+
+  def attend
+    @event = Event.all.find(params[:id])
+    AttendedEvent.create(attendee_id: current_user.id, event_id: @event.id)
+    redirect_to event_path(@event)
   end
 
   private
 
   def event_params
-    params.require(:event).permit(:title, :body, :date, :location)
+    params.require(:event).permit(:title, :body, :date, :location, :creator_id)
   end
 end

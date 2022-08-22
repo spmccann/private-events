@@ -1,0 +1,15 @@
+<h1> <%= @user.name %>'s Events </h1>
+<% if @user == current_user %>
+  <%= link_to "New Event", new_event_path %> <br> <br>
+<% end %>
+
+<% @events.each do |event| %>
+  <% if @user.id == event.creator_id %>
+    <p><%= event.title %></p>
+    <p>Creator: <%= event.user.name %></p>
+    <%= link_to "Event Details", event %>  <br>--------------------
+  <% end %>
+<% end %>
+
+<br> <br> 
+<%= link_to "Back to All Events", root_path %> 
