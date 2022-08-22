@@ -1,0 +1,11 @@
+<h1>Private-Events</h1>
+<p>Create Events. Attend Events. Profit.</p>
+<%= link_to "Sign Up", "users/sign_up" %> <br> <br>
+<%= link_to "Sign In", "users/sign_in" %>
+<% if user_signed_in?%>
+  <%= button_to('Logout', destroy_user_session_path, :method => :delete) %>
+  <h2> All Events </h2>
+  <%# @events.each do |event| %>
+    <%# render event %>
+  <%# end %>
+<% end %>
