@@ -4,7 +4,7 @@
 
 <h3> Attendees </h3>
 <% @attended_event.each do |attendee|%>
-  <%= attendee.attendee_id %> <br>
+  <%= attendee.user.name %> <br>
 <% end %>
-
+<br>
 <%= link_to "Back to All Events", root_path %>

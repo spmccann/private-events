@@ -1,13 +1,24 @@
-<h1> <%= @user.name %>'s Events </h1>
+<h1> <%= @user.name %>'s Event Planner </h1>
 <% if @user == current_user %>
   <%= link_to "New Event", new_event_path %> <br> <br>
 <% end %>
-
+<h3> Events I Created </h3>
 <% @events.each do |event| %>
-  <% if @user.id == event.creator_id %>
-    <p><%= event.title %></p>
-    <p>Creator: <%= event.user.name %></p>
-    <%= link_to "Event Details", event %>  <br>--------------------
+  <p><%= event.title %></p>
+  <%= link_to "Event Details", event %>  <br>-----------------------
+<% end %>
+
+<h3>Events I'm Attending</h3>
+<% @attending.each do |attend|%>
+  <% if attend.event.date >= Date.today %>
+    <%= attend.event.title %> -- <%= attend.event.date %> <br>
+  <% end %>
+<% end %>
+
+<h3>Events I Attended</h3>
+<% @attending.each do |attend|%>
+  <% if attend.event.date < Date.today %>
+    <%= attend.event.title %> -- <%= attend.event.date %> <br>
   <% end %>
 <% end %>
 
