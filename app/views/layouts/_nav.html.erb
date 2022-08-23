@@ -1,0 +1,12 @@
+<ul class="nav-bar">
+  <li class="nav"><%= link_to "Private-Events", root_path %></li>
+  <li class="nav"><%= link_to "Profile", current_user %></li> 
+  <li class="nav"><%= link_to "Create Event", "events/new" %></li> 
+</ul>
+<p class="nav">Create Events. Attend Events. Profit. </p>
+<% if user_signed_in? %>
+  <p class="nav"><%= button_to('Logout', destroy_user_session_path, :method => :delete) %></p> 
+<% else %>
+  <p class="nav"><%= link_to "Sign Up to use Private-Events", "users/sign_up" %></p>
+  <p class="nav"><%= link_to "Sign In to use Private-Events", "users/sign_in" %></p>
+<% end %>

@@ -1,3 +1,6 @@
+<%= render 'layouts/nav' %>
+
+
 <h1> <%= @user.name %>'s Event Planner </h1>
 <% if @user == current_user %>
   <%= link_to "New Event", new_event_path %> <br> <br>
