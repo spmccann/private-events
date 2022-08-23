@@ -2,7 +2,11 @@
 
 
 <h2> Event Details </h2>
+<% if @event.creator_id == current_user.id %>
+  <%= button_to 'Delete Event', @event, method: :delete  %>
+<% end %>
 <%= render @event %>
+
 <%= render 'attend' %> <br>
 
 <h3> Attendees </h3>

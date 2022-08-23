@@ -1,14 +1,14 @@
 <%= render 'layouts/nav' %>
 
  <% if user_signed_in?%> 
-  <h2> Upcoming Events </h2>
+  <h2> All Upcoming Events </h2>
   <% Event.upcoming_events.each do |event| %>
     <p><%= event.title %></p>
     <p>Creator: <%= event.user.name %></p>
     <%= link_to "Event Details", event %>  <br>--------------------
   <% end %>
 
-  <h2> Past Events </h2>
+  <h2> All Past Events </h2>
   <% Event.past_events.each do |event| %>
     <p><%= event.title %></p>
     <p>Creator: <%= event.user.name %></p>
